@@ -387,6 +387,7 @@ async function probeWrite(s3, bucket) {
         Key:         WRITE_PROBE_KEY,
         Body:        'connection test',
         ContentType: 'text/plain',
+        ServerSideEncryption: 'AES256',
         IfMatch:     IMPOSSIBLE_ETAG,
       }),
       { abortSignal: t.signal },
@@ -505,3 +506,4 @@ export async function copyToClipboard(text) {
 export function describeUploadError(e) {
   return classifyError(e, 'upload');
 }
+
